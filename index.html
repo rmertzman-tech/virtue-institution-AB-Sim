@@ -64,6 +64,173 @@
             margin-bottom: 15px;
         }
         
+        /* NEW: Story Panel Styles */
+        .story-panel {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 5px solid #FF6F00;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .story-panel.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .story-panel h3 {
+            color: #E65100;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .story-panel .character-name {
+            font-weight: bold;
+            color: #BF360C;
+            font-size: 1.1em;
+        }
+        
+        .story-section {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            line-height: 1.7;
+        }
+        
+        .story-section h4 {
+            color: #FF6F00;
+            margin-bottom: 10px;
+        }
+        
+        .story-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .story-card {
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px solid;
+        }
+        
+        .story-card.metabolic {
+            background: #e8f5e9;
+            border-color: #4CAF50;
+        }
+        
+        .story-card.extractive {
+            background: #ffebee;
+            border-color: #f44336;
+        }
+        
+        .story-card h4 {
+            margin-bottom: 12px;
+        }
+        
+        .story-card.metabolic h4 {
+            color: #2e7d32;
+        }
+        
+        .story-card.extractive h4 {
+            color: #c62828;
+        }
+        
+        /* NEW: Metric Explanation Tooltips */
+        .metric-explainer {
+            background: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .metric-explainer strong {
+            color: #0d47a1;
+        }
+        
+        /* NEW: Real-time Updates Feed */
+        .updates-feed {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        .updates-feed.active {
+            display: block;
+        }
+        
+        .updates-feed h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .update-item {
+            padding: 10px;
+            margin: 8px 0;
+            background: #f5f5f5;
+            border-left: 3px solid #667eea;
+            border-radius: 5px;
+            font-size: 0.9em;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .update-item.critical {
+            border-left-color: #f44336;
+            background: #ffebee;
+        }
+        
+        .update-item.positive {
+            border-left-color: #4CAF50;
+            background: #e8f5e9;
+        }
+        
+        .update-timestamp {
+            font-size: 0.85em;
+            color: #666;
+            font-weight: bold;
+        }
+        
+        /* NEW: Student Connection Banner */
+        .student-connection {
+            background: linear-gradient(135deg, #ff5722 0%, #ff9800 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 3px solid #e64a19;
+        }
+        
+        .student-connection h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .student-connection p {
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+        
         .controls {
             background: #f8f9fa;
             padding: 30px;
@@ -187,7 +354,6 @@
         
         .results-section {
             display: none;
-            margin-top: 30px;
         }
         
         .results-section.active {
@@ -208,6 +374,7 @@
             padding: 25px;
             text-align: center;
             transition: all 0.3s;
+            cursor: help;
         }
         
         .metric-card:hover {
@@ -372,8 +539,47 @@
             margin-bottom: 10px;
         }
         
+        /* NEW: Collapsible story sections */
+        .collapsible-trigger {
+            background: #667eea;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        
+        .collapsible-trigger:hover {
+            background: #5568d3;
+        }
+        
+        .collapsible-trigger::after {
+            content: ' ▼';
+            float: right;
+        }
+        
+        .collapsible-trigger.active::after {
+            content: ' ▲';
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .collapsible-content.active {
+            max-height: 2000px;
+        }
+        
         @media (max-width: 768px) {
-            .comparison-grid {
+            .comparison-grid, .story-comparison {
                 grid-template-columns: 1fr;
             }
             
@@ -391,76 +597,74 @@
     <div class="container">
         <div class="header">
             <h1>🏛️ Virtue Ethics Simulator</h1>
-            <p>Explore How Institutional Design Affects Human Flourishing</p>
+            <p>See How Institutional Design Destroys or Protects Human Souls</p>
             <p style="font-size: 0.9em; margin-top: 10px;">Ethics Beyond Boundaries | St. Petersburg College</p>
         </div>
         
         <div class="main-content">
             <!-- Welcome Section -->
             <div class="welcome-section" id="welcomeSection">
-                <h2>👋 Welcome to the Interactive Simulation</h2>
-                <p style="line-height: 1.7; margin-bottom: 15px;">
-                    This tool lets you explore how ethical crises spread through communities and how different 
-                    institutional designs enable or destroy human flourishing. Based on agent-based modeling 
-                    research and Aristotelian virtue ethics.
+                <h2>⚠️ A Cautionary Tale and Protection Tool</h2>
+                <p style="line-height: 1.7; margin-bottom: 15px; font-size: 1.1em;">
+                    <strong>This is not a game.</strong> This simulator shows what will happen to you—to your soul, your values, your ability to be who you want to be—when you enter the workforce. Every line on these graphs represents a real person's moral injury or recovery.
                 </p>
-                <p style="line-height: 1.7;">
-                    <strong>Quick Start:</strong> Choose a scenario below, select your mode, and click "Run Simulation" 
-                    to see how virtues, stress, and flourishing evolve over time in different institutional contexts.
+                <p style="line-height: 1.7; font-size: 1.05em;">
+                    You'll meet Sarah (nurse), Mark (engineer), Jennifer (accountant), Maya (coordinator), Alex (student), and David (supervisor). They're you in 5-10 years. What happens to them will happen to you unless you learn NOW how to recognize toxic institutions before they destroy you.
                 </p>
             </div>
             
             <!-- Controls -->
             <div class="controls">
-                <h2 style="color: #667eea; margin-bottom: 25px;">⚙️ Simulation Controls</h2>
+                <h2 style="color: #667eea; margin-bottom: 25px;">⚙️ Choose Your Scenario</h2>
                 
                 <!-- Scenario Selection -->
                 <div class="control-group">
-                    <label for="scenarioSelect">Choose Ethical Scenario:</label>
+                    <label for="scenarioSelect">Ethical Crisis:</label>
                     <select id="scenarioSelect">
-                        <option value="healthcare">Healthcare Moral Injury (COVID burnout)</option>
-                        <option value="whistleblower">Whistleblower Retaliation (Challenger disaster)</option>
-                        <option value="corruption">Corruption Cascade (Enron scandal)</option>
-                        <option value="harassment">Workplace Harassment Cover-Up (#MeToo)</option>
-                        <option value="academic">Academic Dishonesty Ring</option>
-                        <option value="environmental">Environmental Destruction Hidden</option>
+                        <option value="healthcare">Healthcare Moral Injury - Sarah's Story (COVID)</option>
+                        <option value="whistleblower">Whistleblower Retaliation - Mark's Story (Challenger)</option>
+                        <option value="corruption">Corruption Cascade - Jennifer's Story (Enron)</option>
+                        <option value="harassment">Harassment Cover-Up - Maya's Story (#MeToo)</option>
+                        <option value="academic">Academic Dishonesty - Alex's Story (Cheating Ring)</option>
+                        <option value="environmental">Environmental Crime - David's Story (Dumping)</option>
                     </select>
                 </div>
                 
                 <!-- Scenario Description -->
                 <div class="scenario-info" id="scenarioInfo">
                     <h4>📖 About This Scenario</h4>
-                    <p id="scenarioDescription"></p>
-                    <p style="margin-top: 10px;"><strong>Tests virtue:</strong> <span id="scenarioVirtue"></span></p>
-                    <p><strong>Connects to:</strong> <span id="scenarioConnection"></span></p>
+                    <p id="scenarioDescription" style="margin-bottom: 10px;"></p>
+                    <p><strong>Character:</strong> <span id="scenarioCharacter"></span></p>
+                    <p><strong>Tests virtue:</strong> <span id="scenarioVirtue"></span></p>
+                    <p><strong>Real-world connection:</strong> <span id="scenarioConnection"></span></p>
                 </div>
                 
                 <!-- Mode Selection -->
                 <div class="control-group">
                     <label>Simulation Mode:</label>
                     <div class="radio-group">
-                        <label class="radio-option selected" id="modeIndividual">
-                            <input type="radio" name="mode" value="individual" checked>
+                        <label class="radio-option" id="modeIndividual">
+                            <input type="radio" name="mode" value="individual">
                             <span>👤 Single Institution</span>
                         </label>
-                        <label class="radio-option" id="modeComparison">
-                            <input type="radio" name="mode" value="comparison">
-                            <span>⚖️ Compare Both (Recommended!)</span>
+                        <label class="radio-option selected" id="modeComparison">
+                            <input type="radio" name="mode" value="comparison" checked>
+                            <span>⚖️ Compare Both (RECOMMENDED - See The Difference!)</span>
                         </label>
                     </div>
                 </div>
                 
                 <!-- Institution Type (only for individual mode) -->
-                <div class="control-group" id="institutionTypeGroup">
+                <div class="control-group" id="institutionTypeGroup" style="display: none;">
                     <label>Institution Type:</label>
                     <div class="radio-group">
                         <label class="radio-option selected" id="instMetabolic">
                             <input type="radio" name="institution" value="metabolic" checked>
-                            <span>🌱 Metabolic (Supportive)</span>
+                            <span>🌱 Metabolic (Protects Your Soul)</span>
                         </label>
                         <label class="radio-option" id="instExtractive">
                             <input type="radio" name="institution" value="extractive">
-                            <span>⚡ Extractive (Punitive)</span>
+                            <span>⚡ Extractive (Destroys Your Soul)</span>
                         </label>
                     </div>
                 </div>
@@ -468,7 +672,7 @@
                 <!-- Parameters -->
                 <div class="control-group">
                     <label for="numAgents">
-                        Number of Agents: <span class="slider-value" id="numAgentsValue">100</span>
+                        Number of People: <span class="slider-value" id="numAgentsValue">100</span>
                     </label>
                     <input type="range" id="numAgents" min="50" max="200" value="100" step="10">
                 </div>
@@ -482,9 +686,14 @@
                 
                 <!-- Run Buttons -->
                 <div class="button-group">
-                    <button class="btn btn-primary" id="runButton">🚀 Run Simulation</button>
+                    <button class="btn btn-primary" id="runButton">🚀 Run Simulation - See What Happens</button>
                     <button class="btn btn-secondary" id="downloadButton" disabled>📥 Download Data</button>
                 </div>
+            </div>
+            
+            <!-- Story Panel - Character Introduction -->
+            <div class="story-panel" id="storyIntro">
+                <!-- Will be populated when scenario is selected -->
             </div>
             
             <!-- Progress Bar -->
@@ -492,16 +701,40 @@
                 <div class="progress-fill" id="progressFill">0%</div>
             </div>
             
+            <!-- Real-time Updates Feed -->
+            <div class="updates-feed" id="updatesFeed">
+                <h3>📡 What's Happening Right Now</h3>
+                <div id="updatesContainer">
+                    <!-- Updates will be added here during simulation -->
+                </div>
+            </div>
+            
             <!-- Status Message -->
             <div class="status-message" id="statusMessage"></div>
             
             <!-- Results Section -->
             <div class="results-section" id="resultsSection">
+                
+                <!-- Story Panel - What Happened -->
+                <div class="story-panel active" id="storyResults">
+                    <!-- Will be populated with results -->
+                </div>
+                
+                <!-- Student Connection -->
+                <div class="student-connection" id="studentConnection">
+                    <!-- Will be populated -->
+                </div>
+                
                 <!-- Metrics Overview -->
-                <h2 style="color: #667eea; margin-bottom: 20px;">📊 Results</h2>
+                <h2 style="color: #667eea; margin-bottom: 20px;">📊 The Numbers (What They Mean To Real People)</h2>
                 
                 <div class="metrics-grid" id="metricsGrid">
                     <!-- Metrics will be inserted here -->
+                </div>
+                
+                <!-- Metric Explainers -->
+                <div id="metricExplainers">
+                    <!-- Explanations will be inserted here -->
                 </div>
                 
                 <!-- Insight Box -->
@@ -512,17 +745,30 @@
                 <!-- Charts -->
                 <div class="chart-container">
                     <h3>Eudaimonia (Flourishing) Over Time</h3>
+                    <p style="margin-bottom: 15px; color: #666;">Each point on this line represents someone's ability to be who they want to be. When it drops, that's someone's soul breaking.</p>
                     <canvas id="eudaimoniaChart"></canvas>
                 </div>
                 
                 <div class="chart-container">
                     <h3>Virtue Dynamics Over Time</h3>
+                    <p style="margin-bottom: 15px; color: #666;">Watch how courage, wisdom, justice, and self-care get damaged or protected by institutional design.</p>
                     <canvas id="virtueChart"></canvas>
                 </div>
                 
                 <div class="chart-container">
-                    <h3>Stress and Coherence</h3>
+                    <h3>Stress and Soul Integrity</h3>
+                    <p style="margin-bottom: 15px; color: #666;">When stress climbs and coherence drops, that's someone losing themselves—forgetting who they are, becoming someone they don't recognize.</p>
                     <canvas id="stressChart"></canvas>
+                </div>
+                
+                <!-- Detailed Story Analysis -->
+                <button class="collapsible-trigger" id="detailTrigger">
+                    📖 Read Full Story: What Really Happened to These People
+                </button>
+                <div class="collapsible-content" id="detailContent">
+                    <div id="detailedStory">
+                        <!-- Detailed narrative will be inserted here -->
+                    </div>
                 </div>
                 
                 <!-- Comparison Results (only shown in comparison mode) -->
@@ -535,57 +781,326 @@
     
     <script>
         // ========================================================================
-        // ETHICAL SCENARIOS DATABASE
+        // RICH ETHICAL SCENARIOS WITH NARRATIVE
         // ========================================================================
         
         const SCENARIOS = {
             healthcare: {
-                name: "Healthcare Moral Injury",
-                description: "Doctors and nurses forced to ration care, violating professional values. Burnout spreads through the system as caregivers face impossible choices.",
-                virtue: "Temperance (Self-care)",
-                connection: "COVID healthcare workers, Mara ICU nurse case study",
+                name: "Healthcare Moral Injury (COVID Crisis)",
+                shortDesc: "Sarah Chen, 34, ICU nurse. COVID hit. Hospital chose profit over people.",
+                description: "Doctors and nurses forced to ration care, violating everything they trained for. Watch what happens when healthcare becomes a business instead of a calling.",
+                character: "Sarah Chen, 34, ICU nurse with 8 years experience",
+                virtue: "Temperance (Self-care) & Courage",
+                connection: "COVID healthcare workers, Mara ICU nurse testimony",
                 shockSize: 0.20,
-                shockType: "burnout"
+                shockType: "burnout",
+                
+                beforeCrisis: `Sarah LOVED her job. She knew every patient's name. Spent extra time holding hands. Advocated fiercely for better care. Her eudaimonia: 72/100. She went home tired but FULFILLED. Her family saw her smile when she talked about saving Mrs. Rodriguez. She was exactly who she wanted to be: a healer.`,
+                
+                metabolicStory: `When COVID hit, Sarah's metabolic hospital responded immediately:
+                
+                ✅ Week 1: N95s provided to all staff, no rationing
+                ✅ Week 2: Staffing ratios improved (hired crisis nurses)
+                ✅ Week 3: Crisis counselors available 24/7, free therapy
+                ✅ Week 4: Peer support groups started, manager check-ins daily
+                
+                Sarah still worked 12-hour shifts. Still saw patients die. Still cried some nights. Her stress peaked at 0.65. BUT:
+                
+                🧘 BioBond repair: Sarah took mental health days (no questions asked)
+                🤝 Civic repair: Colleagues texted daily: "I see you. You're not alone."
+                🏛️ Institutional repair: Hospital paid for trauma therapy, gave bonuses, protected staffing
+                
+                By month 3: Sarah's eudaimonia recovered to 68. She's exhausted but INTACT. She still knows who she is. She's still a healer. The institution PROTECTED her capacity to care.
+                
+                Sarah told her niece who wants to be a nurse: "Choose your hospital carefully. Mine saved my soul."`,
+                
+                extractiveStory: `When COVID hit, Sarah's extractive hospital chose profit:
+                
+                ❌ Week 1: "Reuse your N95. Heroes don't need supplies."
+                ❌ Week 2: Maintained understaffing: "Do more with less. You signed up for this."
+                ❌ Week 3: Patient died while Sarah forced to prioritize another (haunts her dreams)
+                ❌ Week 4: Sarah asked for help → written up for "negative attitude"
+                ❌ Week 5: Took sick day → threatened with termination
+                
+                Sarah's stress hit 0.89. NO repair loops—only punishment:
+                
+                ⚡ Spoke up about unsafe conditions → retaliation
+                ⚡ Colleagues stopped talking—everyone afraid
+                ⚡ Courage to advocate: DESTROYED (dropped from 50 to 18/100)
+                ⚡ Temperance (self-care): GONE (dropped to 12/100)
+                
+                By month 3: Sarah's eudaimonia: 28/100. She:
+                • Cries in parking lot before every shift
+                • Can't eat (lost 18 pounds)
+                • Snaps at her kids
+                • Can't remember drive home
+                • Thinks: "I used to love helping people. Now I count minutes until I can leave."
+                
+                Month 6: Sarah quits nursing. Applies to insurance companies. The profession LOST her. The institution didn't just burn her out—it KILLED the healer she was.
+                
+                Sarah told her niece: "Don't become a nurse. They'll destroy you."`,
+                
+                whatMetricsFeelLike: {
+                    stress: "When stress reaches 0.8, that's: waking at 3am with chest pain, unable to remember if you locked door, snapping at people you love, forgetting words mid-sentence, crying over small things, feeling nothing when your kid hugs you.",
+                    eudaimonia: "When eudaimonia drops to 30, that's: not recognizing yourself in mirror, unable to remember what you used to care about, going through motions like robot, feeling like fraud, thinking 'this isn't who I wanted to be.'",
+                    courage: "When courage drops from 50 to 18, that's: staying silent when you see unsafe care, letting your patients suffer because you're too afraid to advocate, hating yourself for your cowardice.",
+                    coherence: "When soul integrity drops to 0.35, that's: Sarah Chen who loved healing becoming Sarah Chen who counts minutes. Your sense of WHO YOU ARE fractures. You become a stranger to yourself."
+                },
+                
+                repairExamples: `
+                BioBond (Personal): Sarah takes 10 deep breaths in car before shift. Journals: "I did what I could." Goes for run. Calls her sister. Small acts that claw back 5% coherence.
+                
+                Civic (Peer): Colleague texts: "Coffee after shift? You looked rough." They talk for an hour. Sarah cries. "You're not crazy. System is broken, not you." Moral debt drops 8 points. She feels less alone.
+                
+                Institutional (Policy): Hospital announces: "Mental health days—no questions. We're hiring 20 nurses. We SEE you." Sarah takes day. Sleeps 12 hours. Hospital pays therapy. Stress drops 0.75 → 0.52 in one week.`,
+                
+                damageExamples: `Sarah reports unsafe staffing. Next week: "Performance improvement plan" for "team attitude concerns." Colleagues avoid her—everyone knows what happens to squeaky wheels. Sarah's courage: -25 points. Stress: 0.91. She makes mistakes from stress. Gets written up for mistakes. Cycle accelerates. She's TRAPPED.`,
+                
+                studentConnection: `THIS IS YOUR FUTURE IN 5 YEARS:
+                
+                When you graduate nursing/teaching/social work, the institution you choose will either PROTECT your capacity to care or DESTROY it.
+                
+                Sarah's skills? Identical in both scenarios.
+                Sarah's intentions? Identical in both scenarios.
+                Sarah's VIRTUE? Identical in both scenarios.
+                
+                The ONLY difference: institutional design.
+                
+                🎯 Your first job offer: Does it include mental health support? Peer support groups? Reasonable workload? Protection from retaliation when you speak up?
+                
+                NO? That's extractive. They'll destroy you like they destroyed Sarah.
+                
+                YES? That's metabolic. They'll protect your capacity to become who you want to be.
+                
+                Choose carefully. Your soul depends on it.`
             },
+            
             whistleblower: {
-                name: "Whistleblower Retaliation",
-                description: "One employee reports safety violations and faces retaliation. Fear spreads through the organization as others witness the consequences.",
+                name: "Whistleblower Retaliation (Boisjoly Scenario)",
+                shortDesc: "Mark Rivera, 42, engineer. O-rings fail below 53°F. He has the data. Will they listen?",
+                description: "Safety engineer discovers design flaw that will kill people. Management pressures him to stay quiet. This is Roger Boisjoly's nightmare—happening to you next.",
+                character: "Mark Rivera, 42, senior engineer with 15 years at aerospace company",
                 virtue: "Courage",
-                connection: "Roger Boisjoly & Challenger disaster",
+                connection: "Roger Boisjoly & Challenger disaster (1986)",
                 shockSize: 0.10,
-                shockType: "cowardice"
+                shockType: "cowardice",
+                
+                beforeCrisis: `Mark LOVED solving problems. Took pride in work. Eudaimonia: 78/100. His kids thought he was a hero: "My dad builds ROCKETS!" Mark knew O-rings weren't safe below 53°F. Had the data. Had 15 years expertise. Had the COURAGE to speak up. He thought: "That's why they pay me—to keep people safe."`,
+                
+                metabolicStory: `January 27, 1986, 7pm: Mark presents data to management: "We CANNOT launch below 53°F. O-rings will fail. Seven people will die."
+                
+                Metabolic institution responds:
+                ✅ "Show us the data." (They LISTEN)
+                ✅ Engineers examine evidence for 2 hours
+                ✅ Management concludes: "You're RIGHT. We're scrubbing the launch."
+                ✅ Mark gets email from VP: "This is why we hire people like you. Your courage saved lives."
+                
+                Next day: Launch scrubbed. Mark goes home. Tells kids: "We found a problem. We fixed it. Nobody died today." Kids: "Cool!"
+                
+                Other engineers see this: COURAGE GETS REWARDED. Mark becomes mentor: "Always speak up. We've got your back."
+                
+                Mark's courage: 87/100 (↑) because institution validated his expertise
+                Mark's eudaimonia: 82/100 (↑) because he's exactly who he wanted to be
+                
+                The O-ring gets redesigned. Culture strengthens. Challenger launches safely 6 months later.
+                
+                Mark retires 23 years later. At retirement party, junior engineer toasts: "Mark taught us: Your job isn't to please management. Your job is to tell the truth." Mark cries (good tears). He became the engineer he wanted to be.`,
+                
+                extractiveStory: `January 27, 1986, 7pm: Mark presents data: "We cannot launch below 53°F."
+                
+                Extractive institution responds:
+                ❌ "Are you an expert or aren't you?" (Pressure)
+                ❌ "NASA is watching. Don't embarrass us."
+                ❌ "Take off your engineer hat. Put on your management hat."
+                
+                Mark feels pressure. His boss's boss's boss is on the call. Mark thinks: "15 years of expertise says this will fail. But they're pressuring me. If I'm wrong, I look like coward. If I'm right... they don't care."
+                
+                Mark caves. Signs off on launch.
+                
+                January 28, 1986, 73 seconds after launch: Challenger explodes. Seven people dead. Mark KNEW it would happen. He COULD HAVE stopped it. He didn't.
+                
+                Congressional testimony. Public humiliation. Blackballed in industry. His courage: 9/100 (destroyed). His wisdom (self-trust): 15/100 (can't trust own judgment). Eudaimonia: 22/100.
+                
+                Mark becomes THE cautionary tale: "That's what happens when you rock the boat." Other engineers see this: SHUT UP AND COLLECT PAYCHECK.
+                
+                Mark's career: DESTROYED. His soul: SHATTERED.
+                
+                20 years later, Mark speaks at engineering schools: "I was a good engineer. I don't know what I am now." He never fully recovers. The institution killed his professional identity in one meeting.
+                
+                Mark told engineering students: "I had the data. I had the expertise. I had 15 years of credibility. Didn't matter. They destroyed me anyway."`,
+                
+                whatMetricsFeelLike: {
+                    courage: "When courage drops to 9/100 after retaliation, that's: avoiding eye contact in meetings, rehearsing conversations 50 times before speaking, heart racing when boss's name appears on phone, saying 'yes' when you mean 'no,' hating yourself for cowardice, feeling like imposter in own life.",
+                    eudaimonia: "When eudaimonia drops to 22/100, that's: Roger Boisjoly post-Challenger: 'I was a good engineer. I don't know what I am now.' Can't look at photos from before. Can't watch rocket launches. Flinches when people ask what you do. Lost 30 years of identity in one moment."
+                },
+                
+                repairExamples: `
+                BioBond: Mark starts therapy. Writes article about experience. Speaks at schools: "Here's what I learned about moral courage." Each speech reclaims 3 points eudaimonia. Slow, painful rebuilding.
+                
+                Civic: Other engineers reach out: "What happened to you was WRONG. You were RIGHT." Mark finds community of whistleblowers. Realizes: "I'm not crazy. System is broken."
+                
+                Institutional: Engineering society creates whistleblower protection award in Mark's name. New employer: "We hired you BECAUSE you spoke up. That's who we want." Mark teaches ethics to engineers. Finds new purpose. Eudaimonia climbs to 71 over 8 years.`,
+                
+                damageExamples: `After testimony, Mark transferred to basement office. Given meaningless tasks. Colleagues stop inviting to lunch. His kids hear: "Your dad's the whistleblower who couldn't get along." Wife: "Can you just let it go?" Mark can't. Every day walks past Challenger memorial photo. Courage: 8/100. He becomes ghost in own life.`,
+                
+                studentConnection: `THIS WILL BE YOU IN 10 YEARS:
+                
+                You'll get your first real job. Boss will ask you to do something you KNOW is wrong:
+                • Cut corners on safety
+                • Lie to customers
+                • Ignore harassment
+                • Fake test results
+                
+                You'll have 3 options:
+                1. Speak up (if metabolic: promoted; if extractive: destroyed)
+                2. Stay quiet (soul dies slowly)
+                3. Quit (lose salary, health insurance, rent money)
+                
+                Boisjoly had:
+                ✓ 15 years experience
+                ✓ Great reputation
+                ✓ Clear data
+                ✓ CORRECT analysis
+                
+                Didn't matter. Extractive institution CRUSHED him anyway.
+                
+                🎯 You need to know this NOW, before you sign your first employment contract.
+                
+                ASK at job interview:
+                "What happened to the last person who reported a safety concern?"
+                "How do you protect people who speak up?"
+                "Can you give me example of someone who challenged leadership and was promoted?"
+                
+                If they can't answer: RUN. That's extractive. They'll destroy you like they destroyed Boisjoly.`
             },
+            
+            // Additional scenarios would follow the same rich narrative pattern...
+            // Continuing with abbreviated versions for space:
+            
             corruption: {
-                name: "Corruption Cascade",
-                description: "Bribery scandal spreads through organization. Justice and trust collapse as ethical standards erode.",
-                virtue: "Justice",
-                connection: "Enron, institutional betrayal",
+                name: "Corruption Cascade (Enron-Style Financial Fraud)",
+                shortDesc: "Jennifer Wu, 28, accountant. The numbers don't match reality. Report it or sign off?",
+                description: "Financial fraud spreads through organization. Justice collapses. This is Enron. This is Arthur Andersen. This will be your accounting firm.",
+                character: "Jennifer Wu, 28, accountant, 3 years post-CPA",
+                virtue: "Justice & Wisdom",
+                connection: "Enron scandal (2001), Arthur Andersen collapse",
                 shockSize: 0.15,
-                shockType: "injustice"
+                shockType: "injustice",
+                beforeCrisis: `Jennifer believed in honest books. Eudaimonia: 68. Told parents: "I help companies stay honest." They were proud.`,
+                metabolicStory: `Jennifer spots fraud. Reports it. Metabolic company investigates, fires fraudster, promotes Jennifer to Ethics Board. Justice rewarded. Eudaimonia: 79.`,
+                extractiveStory: `Jennifer spots fraud. Told: "Above your pay grade." Signs off. More fraud next month. "Everyone's doing it." Jennifer's justice: 35. Can't sleep. Moral debt: 67. Eventually: scandal breaks. Company collapses. Jennifer's reputation destroyed. Works retail now. Can't look at balance sheets without feeling sick. Eudaimonia: 18.`,
+                whatMetricsFeelLike: {
+                    justice: "When justice drops to 35, that's: knowing you're lying, avoiding mirrors, rehearsing excuses, feeling hollow, unable to enjoy dishonest money, waiting for other shoe to drop.",
+                    moralDebt: "When moral debt reaches 67, that's: weight of what you DIDN'T do crushing you more than what you did. Sherron Watkins: 'I stayed quiet too long. I KNEW.'"
+                },
+                studentConnection: `THIS IS GRADUATION +3 YEARS:
+
+You'll get job offers from companies with "aggressive accounting" or "competitive sales tactics" or "flexible compliance."
+
+Translation: They want you to LIE.
+
+You're 22. Have student loans. Need job. They'll pressure: "Everyone does it."
+
+Will you be Jennifer—signing fraudulent reports at 2am, hating yourself, trapped by own complicity?
+
+Or will you quit before you become her?
+
+Choose your employer carefully. Your integrity hangs in balance.`
             },
+            
             harassment: {
-                name: "Workplace Harassment Cover-Up",
-                description: "Sexual harassment complaints ignored by HR. Fear and injustice spread as the institution protects perpetrators.",
+                name: "Workplace Sexual Harassment Cover-Up",
+                shortDesc: "Maya Johnson, 26, first real job. Senior VP makes comments. HR protects him, not her.",
+                description: "#MeToo wasn't abstract. It was Maya. It was thousands of Mayas. Watch what institutions do when power harasses vulnerability.",
+                character: "Maya Johnson, 26, marketing coordinator, first professional job",
                 virtue: "Courage & Justice",
-                connection: "#MeToo movement, institutional complicity",
+                connection: "#MeToo movement, Harvey Weinstein case, institutional complicity",
                 shockSize: 0.18,
-                shockType: "injustice"
+                shockType: "injustice",
+                beforeCrisis: `Maya loved work. Creative. Building career. Eudaimonia: 71. Told younger sister: "You can do anything. Work hard, be excellent, doors open." She believed it.`,
+                metabolicStory: `VP makes inappropriate comments. Maya reports. Metabolic HR: "Investigating. You're protected." VP fired within 2 weeks. CEO: "Your safety matters more than his seniority." Maya promoted to VP's role. Courage: 82. She becomes leader who protects next Maya. Eudaimonia: 76.`,
+                extractiveStory: `VP makes comments. Maya reports. HR: "He's just old-school. Don't make waves. He brings in millions." Comments escalate. Hand on thigh in meeting. Maya pulls away. Next week: "Performance issues—restructuring your role." Maya realizes: pushed out for reporting. Colleagues avoid her. Courage: 19. Justice: 14. Eudaimonia: 24. Quits. No reference. Student loans still due. Takes 4 years to try corporate job again. Flinches every time senior male colleague talks to her.`,
+                whatMetricsFeelLike: {
+                    courage: "When courage drops to 19 after retaliation, that's: checking every email 10 times, crying in bathroom between meetings, sleeping 4 hours, body tensing when his name mentioned, losing 15 pounds from stress.",
+                    eudaimonia: "When eudaimonia drops to 24, that's: Christine Blasey Ford: 'I did right thing. Why do I feel destroyed?' System punished your courage. You question if you imagined it. Maybe you ARE too sensitive. Your own judgment becomes untrustworthy."
+                },
+                studentConnection: `THIS COULD BE YOU IN 3 YEARS:
+
+You'll be youngest in office. Someone senior will test boundaries.
+
+Will your company protect you or them?
+
+Most protect POWER, not people.
+
+Learn red flags NOW:
+❌ "It's not that serious."
+❌ "He's socially awkward."
+❌ "Don't be so sensitive."
+
+Translation: We will protect him and sacrifice YOU.
+
+Choose employer carefully. Your safety depends on it.`
             },
+            
             academic: {
-                name: "Academic Dishonesty Ring",
-                description: "Cheating ring discovered. Trust in academic integrity collapses as students question whether honesty is rewarded.",
-                virtue: "Wisdom",
-                connection: "Honor code violations, pressure culture",
+                name: "Academic Dishonesty Ring (Pressure Culture)",
+                shortDesc: "Alex Torres, 19, pre-med. Everyone's cheating. Honest kids lose. What do you do?",
+                description: "Widespread cheating discovered. Trust collapses. Students learn: honesty is for suckers. This is happening RIGHT NOW in your classroom.",
+                character: "Alex Torres, 19, sophomore pre-med, first in family to attend college",
+                virtue: "Wisdom & Justice",
+                connection: "Honor code violations, grade inflation, pressure culture",
                 shockSize: 0.12,
-                shockType: "foolishness"
+                shockType: "foolishness",
+                beforeCrisis: `Alex studied 40 hrs/week. Honest. Proud. Eudaimonia: 73. Parents sacrificed for education. Alex was going to be doctor—the RIGHT way. Integrity mattered.`,
+                metabolicStory: `Alex discovers cheating ring. Reports. University investigates. 23 students face honor board. President: "We will not compromise integrity. Honest B+ beats fraudulent A." Alex gets into med school: "We want students like you." Eudaimonia: 82. Becomes honest doctor.`,
+                extractiveStory: `Alex discovers cheating. Reports. Professor: "I don't want to know. Focus on your work." Alex watches: cheaters get better grades. Med school needs 3.8 GPA. Alex has 3.7 (honest work). Classmate with 3.9 (half cheating) gets into dream school. Alex doesn't. Wisdom: 31 (can't trust that honesty works). Justice: 18 (system rewards cheaters). Eudaimonia: 33. Alex starts cheating junior year. Gets into med school. But something died. He's doctor now—one who learned honesty is for suckers.`,
+                studentConnection: `THIS IS HAPPENING RIGHT NOW:
+
+Look around classroom. Someone is cheating.
+
+Will you report it?
+What happens if you do?
+What happens if you don't?
+
+Your choices at 19 shape who you become at 35.
+
+Do you become doctor who tells truth to patients?
+Or one who cuts corners?
+
+It starts HERE. RIGHT NOW. In Organic Chemistry.
+
+Your institution's response to cheating teaches you whether integrity matters or kills you.`
             },
+            
             environmental: {
-                name: "Environmental Destruction Hidden",
-                description: "Company hides environmental damage. Workers face moral conflict between livelihood and conscience.",
-                virtue: "Justice",
-                connection: "BP oil spill, corporate responsibility",
+                name: "Environmental Destruction Hidden (Conscience vs. Paycheck)",
+                shortDesc: "David Martinez, 38, plant supervisor. Company dumping toxic waste. Report it = fired. Stay quiet = poisoned river.",
+                description: "Company hides environmental crime. Workers face impossible choice: protect conscience or feed family. This is DuPont. This is BP. This will be your employer.",
+                character: "David Martinez, 38, chemical plant supervisor, 12 years, two kids in school",
+                virtue: "Justice & Courage",
+                connection: "BP oil spill, DuPont PFAS contamination, corporate environmental crimes",
                 shockSize: 0.14,
-                shockType: "injustice"
+                shockType: "injustice",
+                beforeCrisis: `David loved work. Fed family. Safe job in tough economy. Eudaimonia: 69. Coached son's baseball. Community respected him. Guy who worked hard, followed rules, provided for family.`,
+                metabolicStory: `David discovers: toxic waste dumped in river (40x legal limit). Reports. Metabolic company: "Show us data." Hires environmental firm. Confirms David's findings. Board: "Stop dumping. Hire cleanup. Report to EPA ourselves. Expensive but necessary." David becomes Environmental Safety Director. Salary increases. Eudaimonia: 77. Tells kids: "Always tell truth. Good companies will protect you."`,
+                extractiveStory: `David discovers dumping. Reports. Management: "We're in compliance [LIE]. Above your pay grade." David knows it's not compliant. Reports to EPA anonymously. Company finds out. "Disloyal. Traitor." Transferred to night shift. Pay cut. Rumors: "troublemaker." Eventually fired. Blackballed. Walmart job 40% pay cut. Son stops baseball—can't afford equipment. Eudaimonia: 26. David thinks: "I did right thing. Why did family pay price?" He's 38, career destroyed, can't look kids in eye. And river still poisoned. His sacrifice changed NOTHING.`,
+                studentConnection: `THIS IS YOUR FIRST REAL JOB:
+
+You're 24, two years out. Your company asks you to falsify test results / hide data / lie to regulators.
+
+You have student loans, rent, maybe kids coming.
+
+Boss: "Just this once. Everyone does it."
+
+What will you do?
+
+If extractive: You lose career like David. Your sacrifice might change nothing. Pollution continues. Kids suffer.
+
+If you stay quiet: Pollution continues AND your soul dies.
+
+NO GOOD CHOICE in extractive institution.
+
+This is why institutional design is MOST IMPORTANT ethical question. Institution determines whether courage is possible or suicide.`
             }
         };
         
@@ -610,7 +1125,6 @@
             }
             
             calculateEudaimonia() {
-                // Eudaimonia based on golden mean (50 is ideal)
                 const deviations = Object.values(this.virtues)
                     .reduce((sum, v) => sum + Math.abs(v - 50), 0);
                 const baseEud = Math.max(0, 100 - (deviations / 2));
@@ -637,13 +1151,12 @@
                 this.institutionType = institutionType;
                 this.agents = [];
                 this.repairEvents = { biobond: 0, civic: 0, institutional: 0 };
+                this.narrativeEvents = [];
                 
-                // Create agents
                 for (let i = 0; i < numAgents; i++) {
                     this.agents.push(new Agent(i));
                 }
                 
-                // Create simple network (each agent connected to 3-5 others)
                 this.connections = this.createNetwork();
             }
             
@@ -677,7 +1190,6 @@
                     agent.stress = 0.8;
                     agent.prfCoherence = 0.4;
                     
-                    // Damage virtues based on shock type
                     if (scenario.shockType === 'cowardice') {
                         agent.virtues.courage -= 30;
                         agent.virtues.justice -= 15;
@@ -697,16 +1209,20 @@
                 });
             }
             
-            simulate(numTimesteps, progressCallback) {
+            simulate(numTimesteps, progressCallback, narrativeCallback) {
                 for (let t = 0; t < numTimesteps; t++) {
-                    // Update progress
                     if (progressCallback) {
                         progressCallback((t / numTimesteps) * 100);
                     }
                     
-                    // Update each agent
+                    // Generate narrative events at key moments
+                    if (narrativeCallback && (t === 5 || t === 15 || t === 30 || t === 45)) {
+                        const avgEud = this.agents.reduce((sum, a) => sum + a.eudaimonia, 0) / this.numAgents;
+                        const avgStress = this.agents.reduce((sum, a) => sum + a.stress, 0) / this.numAgents;
+                        narrativeCallback(t, avgEud, avgStress, this.institutionType);
+                    }
+                    
                     this.agents.forEach(agent => {
-                        // Stress propagation
                         const neighbors = this.connections
                             .filter(([from, to]) => from === agent.id)
                             .map(([from, to]) => this.agents[to]);
@@ -716,7 +1232,6 @@
                             agent.stress = Math.min(1.0, agent.stress + (avgNeighborStress * 0.4 / neighbors.length));
                         }
                         
-                        // Stress damages virtues and coherence
                         if (agent.stress > 0.3) {
                             Object.keys(agent.virtues).forEach(v => {
                                 agent.virtues[v] = Math.max(0, agent.virtues[v] - (0.03 * agent.stress));
@@ -727,7 +1242,6 @@
                             agent.prfCoherence = Math.max(0, agent.prfCoherence - 0.02);
                         }
                         
-                        // Moral debt accumulation
                         if (agent.stress > 0.4 && agent.eudaimonia < 40) {
                             agent.moralDebt = Math.min(100, agent.moralDebt + 0.1);
                         }
@@ -735,10 +1249,7 @@
                         agent.calculateEudaimonia();
                     });
                     
-                    // Repair loops
                     this.applyRepairLoops();
-                    
-                    // Record history
                     this.agents.forEach(agent => agent.recordHistory());
                 }
                 
@@ -751,14 +1262,14 @@
                 const avgEudaimonia = this.agents.reduce((sum, a) => sum + a.eudaimonia, 0) / this.numAgents;
                 
                 this.agents.forEach(agent => {
-                    // BioBond Loop - Personal resilience
+                    // BioBond
                     if (agent.eudaimonia < 50 && Math.random() < 0.15) {
                         agent.stress = Math.max(0, agent.stress * 0.85);
                         agent.prfCoherence = Math.min(1.0, agent.prfCoherence + 0.05);
                         this.repairEvents.biobond++;
                     }
                     
-                    // Civic Loop - Peer support (metabolic only)
+                    // Civic (metabolic only)
                     if (this.institutionType === 'metabolic') {
                         if (agent.eudaimonia < 40 && Math.random() < 0.10) {
                             agent.moralDebt = Math.max(0, agent.moralDebt - 5);
@@ -770,7 +1281,7 @@
                         }
                     }
                     
-                    // Institutional Loop - Policy intervention (metabolic only)
+                    // Institutional (metabolic only)
                     if (this.institutionType === 'metabolic' && avgEudaimonia < 60) {
                         if (agent.eudaimonia < 50 && Math.random() < 0.05) {
                             agent.stress = Math.max(0, agent.stress - 0.20);
@@ -779,7 +1290,7 @@
                         }
                     }
                     
-                    // Extractive institution punishment
+                    // Extractive punishment
                     if (this.institutionType === 'extractive') {
                         if (agent.eudaimonia < 40) {
                             agent.stress = Math.min(1.0, agent.stress + 0.3);
@@ -845,22 +1356,40 @@
         }
         
         // ========================================================================
-        // UI LOGIC
+        // UI LOGIC WITH ENHANCED STORYTELLING
         // ========================================================================
         
         let currentResults = null;
         let charts = {};
+        let currentScenario = null;
         
         // Update scenario info when selection changes
         document.getElementById('scenarioSelect').addEventListener('change', function() {
             updateScenarioInfo();
+            showStoryIntro();
         });
         
         function updateScenarioInfo() {
-            const scenario = SCENARIOS[document.getElementById('scenarioSelect').value];
-            document.getElementById('scenarioDescription').textContent = scenario.description;
-            document.getElementById('scenarioVirtue').textContent = scenario.virtue;
-            document.getElementById('scenarioConnection').textContent = scenario.connection;
+            currentScenario = SCENARIOS[document.getElementById('scenarioSelect').value];
+            document.getElementById('scenarioDescription').textContent = currentScenario.description;
+            document.getElementById('scenarioCharacter').textContent = currentScenario.character;
+            document.getElementById('scenarioVirtue').textContent = currentScenario.virtue;
+            document.getElementById('scenarioConnection').textContent = currentScenario.connection;
+        }
+        
+        function showStoryIntro() {
+            const storyIntro = document.getElementById('storyIntro');
+            storyIntro.innerHTML = `
+                <h3>👤 Meet ${currentScenario.character.split(',')[0]}</h3>
+                <div class="story-section">
+                    <h4>Before The Crisis:</h4>
+                    <p>${currentScenario.beforeCrisis}</p>
+                </div>
+                <p style="margin-top: 15px; font-weight: 600; color: #E65100;">
+                    Now let's see what happens when the crisis hits...
+                </p>
+            `;
+            storyIntro.classList.add('active');
         }
         
         // Update slider values
@@ -878,20 +1407,31 @@
                 const input = this.querySelector('input[type="radio"]');
                 input.checked = true;
                 
-                // Update styling
                 const group = this.parentElement;
                 group.querySelectorAll('.radio-option').forEach(opt => {
                     opt.classList.remove('selected');
                 });
                 this.classList.add('selected');
                 
-                // Show/hide institution type selection
                 if (input.name === 'mode') {
                     const institutionGroup = document.getElementById('institutionTypeGroup');
                     if (input.value === 'comparison') {
                         institutionGroup.style.display = 'none';
                     } else {
                         institutionGroup.style.display = 'block';
+                    }
+                }
+            });
+        });
+        
+        // Collapsible story sections
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('collapsible-trigger')) {
+                    e.target.classList.toggle('active');
+                    const content = document.getElementById(e.target.id.replace('Trigger', 'Content'));
+                    if (content) {
+                        content.classList.toggle('active');
                     }
                 }
             });
@@ -907,12 +1447,13 @@
             const numAgents = parseInt(document.getElementById('numAgents').value);
             const numTimesteps = parseInt(document.getElementById('numTimesteps').value);
             
-            // Hide welcome and results
             document.getElementById('welcomeSection').style.display = 'none';
+            document.getElementById('storyIntro').style.display = 'none';
             document.getElementById('resultsSection').classList.remove('active');
             
-            // Show progress
             document.getElementById('progressBar').classList.add('active');
+            document.getElementById('updatesFeed').classList.add('active');
+            document.getElementById('updatesContainer').innerHTML = '';
             document.getElementById('runButton').disabled = true;
             
             if (mode === 'individual') {
@@ -922,13 +1463,13 @@
                 await runComparison(scenario, numAgents, numTimesteps);
             }
             
-            // Hide progress
             document.getElementById('progressBar').classList.remove('active');
             document.getElementById('runButton').disabled = false;
             document.getElementById('downloadButton').disabled = false;
-            
-            // Show results
             document.getElementById('resultsSection').classList.add('active');
+            
+            // Scroll to results
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
         }
         
         async function runSingleSimulation(scenario, numAgents, numTimesteps, institution) {
@@ -937,7 +1478,7 @@
             const community = new Community(numAgents, institution);
             community.applyShock(scenario);
             
-            await simulateWithProgress(community, numTimesteps);
+            await simulateWithProgress(community, numTimesteps, scenario, institution);
             
             showStatus('✅ Simulation complete!', 'success');
             
@@ -954,24 +1495,21 @@
         async function runComparison(scenario, numAgents, numTimesteps) {
             const results = {};
             
-            // Run metabolic
-            showStatus('Running METABOLIC institution simulation...', 'info');
+            showStatus('Running METABOLIC institution (the one that protects people)...', 'info');
             const metabolic = new Community(numAgents, 'metabolic');
             metabolic.applyShock(scenario);
-            await simulateWithProgress(metabolic, numTimesteps);
+            await simulateWithProgress(metabolic, numTimesteps, scenario, 'metabolic');
             results.metabolic = metabolic;
             
-            // Short delay
             await new Promise(resolve => setTimeout(resolve, 500));
             
-            // Run extractive
-            showStatus('Running EXTRACTIVE institution simulation...', 'info');
+            showStatus('Running EXTRACTIVE institution (the one that destroys people)...', 'info');
             const extractive = new Community(numAgents, 'extractive');
             extractive.applyShock(scenario);
-            await simulateWithProgress(extractive, numTimesteps);
+            await simulateWithProgress(extractive, numTimesteps, scenario, 'extractive');
             results.extractive = extractive;
             
-            showStatus('✅ Comparison complete!', 'success');
+            showStatus('✅ Comparison complete! Scroll down to see the dramatic difference...', 'success');
             
             currentResults = {
                 mode: 'comparison',
@@ -982,16 +1520,70 @@
             displayComparison();
         }
         
-        function simulateWithProgress(community, numTimesteps) {
+        function simulateWithProgress(community, numTimesteps, scenario, institution) {
             return new Promise(resolve => {
-                // Use setTimeout to allow UI updates
                 setTimeout(() => {
-                    community.simulate(numTimesteps, (progress) => {
-                        updateProgress(progress);
-                    });
+                    community.simulate(numTimesteps, 
+                        (progress) => {
+                            updateProgress(progress);
+                        },
+                        (timestep, avgEud, avgStress, instType) => {
+                            addNarrativeUpdate(timestep, avgEud, avgStress, instType, scenario);
+                        }
+                    );
                     resolve();
                 }, 100);
             });
+        }
+        
+        function addNarrativeUpdate(timestep, avgEud, avgStress, institution, scenario) {
+            const container = document.getElementById('updatesContainer');
+            const characterName = scenario.character.split(',')[0];
+            
+            let message = '';
+            let className = 'update-item';
+            
+            if (timestep === 5) {
+                if (institution === 'metabolic') {
+                    message = `${characterName} is stressed (${(avgStress*100).toFixed(0)}%) but institution is responding with support...`;
+                    className += ' positive';
+                } else {
+                    message = `${characterName} reports the problem. Institution retaliates. Stress climbing: ${(avgStress*100).toFixed(0)}%`;
+                    className += ' critical';
+                }
+            } else if (timestep === 15) {
+                if (institution === 'metabolic') {
+                    message = `Repair loops activating. ${characterName}'s colleagues are reaching out. Eudaimonia: ${avgEud.toFixed(1)}`;
+                    className += ' positive';
+                } else {
+                    message = `${characterName}'s courage is collapsing. Fear spreads through organization. Eudaimonia: ${avgEud.toFixed(1)}`;
+                    className += ' critical';
+                }
+            } else if (timestep === 30) {
+                if (institution === 'metabolic') {
+                    message = `${characterName} is recovering. Community is supporting each other. Eudaimonia: ${avgEud.toFixed(1)}`;
+                    className += ' positive';
+                } else {
+                    message = `${characterName} can't recognize themselves anymore. Soul integrity shattered. Eudaimonia: ${avgEud.toFixed(1)}`;
+                    className += ' critical';
+                }
+            } else if (timestep === 45) {
+                if (institution === 'metabolic') {
+                    message = `${characterName} is exhausted but intact. Still knows who they are. Eudaimonia: ${avgEud.toFixed(1)}`;
+                    className += ' positive';
+                } else {
+                    message = `${characterName} is applying to other jobs. Profession losing them. Eudaimonia: ${avgEud.toFixed(1)}`;
+                    className += ' critical';
+                }
+            }
+            
+            if (message) {
+                const update = document.createElement('div');
+                update.className = className;
+                update.innerHTML = `<span class="update-timestamp">Step ${timestep}:</span> ${message}`;
+                container.appendChild(update);
+                container.scrollTop = container.scrollHeight;
+            }
         }
         
         function updateProgress(percent) {
@@ -1007,54 +1599,106 @@
         }
         
         function displayResults() {
-            const { community, institution } = currentResults;
+            const { community, institution, scenario } = currentResults;
             const metrics = community.getFinalMetrics();
             const timeData = community.getTimeSeriesData();
             
-            // Clear previous results
             document.getElementById('metricsGrid').innerHTML = '';
             document.getElementById('comparisonGrid').style.display = 'none';
             document.getElementById('insightBox').style.display = 'none';
             
-            // Display metrics
-            displayMetrics(metrics, 50); // Compare to starting value of 50
+            // Show story results
+            const storyResults = document.getElementById('storyResults');
+            const storyContent = institution === 'metabolic' ? scenario.metabolicStory : scenario.extractiveStory;
+            storyResults.innerHTML = `
+                <h3>${institution === 'metabolic' ? '🌱 What Happened (Metabolic Institution)' : '⚡ What Happened (Extractive Institution)'}</h3>
+                <div class="story-section">
+                    ${storyContent.split('\n\n').map(p => `<p style="margin: 10px 0;">${p}</p>`).join('')}
+                </div>
+            `;
             
-            // Create charts
+            // Show student connection
+            document.getElementById('studentConnection').innerHTML = `
+                <h3>🎯 Why This Matters To YOU</h3>
+                ${scenario.studentConnection.split('\n\n').map(p => `<p style="margin: 10px 0;">${p}</p>`).join('')}
+            `;
+            
+            displayMetrics(metrics, 50);
+            displayMetricExplainers(scenario);
             createEudaimoniaChart(timeData.eudaimonia);
             createVirtueChart(timeData.virtues, timeData.eudaimonia.length);
             createStressChart(timeData.stress, timeData.coherence);
         }
         
         function displayComparison() {
-            const { results } = currentResults;
+            const { results, scenario } = currentResults;
             const metabolicMetrics = results.metabolic.getFinalMetrics();
             const extractiveMetrics = results.extractive.getFinalMetrics();
             const metabolicData = results.metabolic.getTimeSeriesData();
             const extractiveData = results.extractive.getTimeSeriesData();
             
-            // Clear previous
             document.getElementById('metricsGrid').innerHTML = '';
             document.getElementById('comparisonGrid').innerHTML = '';
             
-            // Show insight box
+            // Show story comparison
+            const storyResults = document.getElementById('storyResults');
+            storyResults.innerHTML = `
+                <h3>📖 The Same Person, Two Different Outcomes</h3>
+                <div class="story-comparison">
+                    <div class="story-card metabolic">
+                        <h4>🌱 Metabolic Institution</h4>
+                        ${scenario.metabolicStory.substring(0, 500)}...
+                    </div>
+                    <div class="story-card extractive">
+                        <h4>⚡ Extractive Institution</h4>
+                        ${scenario.extractiveStory.substring(0, 500)}...
+                    </div>
+                </div>
+                <button class="collapsible-trigger" id="fullStoryTrigger">
+                    📖 Read Full Stories (Scroll down for complete narratives)
+                </button>
+                <div class="collapsible-content" id="fullStoryContent">
+                    <div style="margin: 20px 0;">
+                        <h4 style="color: #4CAF50; margin: 20px 0;">🌱 Metabolic Institution - Full Story:</h4>
+                        ${scenario.metabolicStory.split('\n\n').map(p => `<p style="margin: 10px 0;">${p}</p>`).join('')}
+                    </div>
+                    <div style="margin: 20px 0;">
+                        <h4 style="color: #f44336; margin: 20px 0;">⚡ Extractive Institution - Full Story:</h4>
+                        ${scenario.extractiveStory.split('\n\n').map(p => `<p style="margin: 10px 0;">${p}</p>`).join('')}
+                    </div>
+                </div>
+            `;
+            
+            // Show student connection
+            document.getElementById('studentConnection').innerHTML = `
+                <h3>🎯 Why This Matters To YOU</h3>
+                ${scenario.studentConnection.split('\n\n').map(p => `<p style="margin: 10px 0;">${p}</p>`).join('')}
+            `;
+            
             const eudDiff = metabolicMetrics.eudaimonia - extractiveMetrics.eudaimonia;
             const insightBox = document.getElementById('insightBox');
             insightBox.style.display = 'block';
             insightBox.innerHTML = `
-                <h3>💡 Key Insight</h3>
-                <p style="font-size: 1.2em; margin-bottom: 15px;">
-                    <strong>The SAME ethical crisis produced a ${Math.abs(eudDiff).toFixed(1)} point difference in eudaimonia!</strong>
+                <h3>💡 THE KEY INSIGHT</h3>
+                <p style="font-size: 1.3em; margin-bottom: 15px;">
+                    <strong>THE SAME CRISIS produced a ${Math.abs(eudDiff).toFixed(1)} point eudaimonia difference!</strong>
                 </p>
-                <p style="line-height: 1.7;">
-                    Metabolic institution enabled <strong>${metabolicMetrics.repairs.biobond + metabolicMetrics.repairs.civic + metabolicMetrics.repairs.institutional} repair events</strong>.<br>
-                    Extractive institution enabled <strong>${extractiveMetrics.repairs.biobond + extractiveMetrics.repairs.civic + extractiveMetrics.repairs.institutional} repair events</strong>.
+                <p style="line-height: 1.7; font-size: 1.1em;">
+                    Same person. Same skills. Same intentions. Same values.<br>
+                    <strong>Different institution = Opposite outcome.</strong>
                 </p>
-                <p style="margin-top: 15px; font-style: italic;">
+                <p style="margin-top: 15px;">
+                    Metabolic: <strong>${metabolicMetrics.repairs.biobond + metabolicMetrics.repairs.civic + metabolicMetrics.repairs.institutional} repair events</strong><br>
+                    Extractive: <strong>${extractiveMetrics.repairs.biobond + extractiveMetrics.repairs.civic + extractiveMetrics.repairs.institutional} repair events</strong>
+                </p>
+                <p style="margin-top: 15px; font-style: italic; font-size: 1.1em;">
                     "The polis exists to make eudaimonia POSSIBLE." - Aristotle
+                </p>
+                <p style="margin-top: 15px; font-weight: 600;">
+                    Institutional design isn't just policy. It's the difference between soul repair and soul destruction.
                 </p>
             `;
             
-            // Comparison cards
             const comparisonGrid = document.getElementById('comparisonGrid');
             comparisonGrid.style.display = 'grid';
             
@@ -1069,7 +1713,7 @@
                 </div>
             `;
             
-            // Create comparison charts
+            displayMetricExplainers(scenario);
             createComparisonChart(metabolicData.eudaimonia, extractiveData.eudaimonia);
             createVirtueChart({
                 'Metabolic Eudaimonia': metabolicData.eudaimonia,
@@ -1079,32 +1723,37 @@
         }
         
         function createMetricsList(metrics) {
+            const totalRepairs = metrics.repairs.biobond + metrics.repairs.civic + metrics.repairs.institutional;
             return `
                 <div style="margin: 20px 0;">
-                    <p style="font-size: 1.1em; margin: 10px 0;">
-                        <strong>Eudaimonia:</strong> ${metrics.eudaimonia.toFixed(1)}/100
+                    <p style="font-size: 1.2em; margin: 10px 0;">
+                        <strong>Eudaimonia:</strong> ${metrics.eudaimonia.toFixed(1)}/100<br>
+                        <span style="font-size: 0.9em; color: #666;">(Ability to be who you want to be)</span>
                     </p>
-                    <p style="font-size: 1.1em; margin: 10px 0;">
-                        <strong>Stress:</strong> ${metrics.stress.toFixed(2)}
+                    <p style="font-size: 1.2em; margin: 10px 0;">
+                        <strong>Stress:</strong> ${metrics.stress.toFixed(2)}<br>
+                        <span style="font-size: 0.9em; color: #666;">(${metrics.stress < 0.5 ? 'Manageable' : metrics.stress < 0.7 ? 'High - affecting function' : 'Critical - soul breaking'})</span>
                     </p>
-                    <p style="font-size: 1.1em; margin: 10px 0;">
-                        <strong>Soul Integrity:</strong> ${metrics.coherence.toFixed(2)}
+                    <p style="font-size: 1.2em; margin: 10px 0;">
+                        <strong>Soul Integrity:</strong> ${metrics.coherence.toFixed(2)}<br>
+                        <span style="font-size: 0.9em; color: #666;">(${metrics.coherence > 0.7 ? 'Intact - knows who they are' : metrics.coherence > 0.4 ? 'Fragmenting' : 'Shattered - unrecognizable to self'})</span>
                     </p>
-                    <p style="font-size: 1.1em; margin: 10px 0;">
-                        <strong>Moral Debt:</strong> ${metrics.moralDebt.toFixed(1)}
+                    <p style="font-size: 1.2em; margin: 10px 0;">
+                        <strong>Moral Debt:</strong> ${metrics.moralDebt.toFixed(1)}<br>
+                        <span style="font-size: 0.9em; color: #666;">(Accumulated ethical injury)</span>
                     </p>
                     <hr style="margin: 15px 0; border: 1px solid #ddd;">
-                    <p style="font-size: 1.1em; margin: 10px 0;">
-                        <strong>Repair Events:</strong>
+                    <p style="font-size: 1.2em; margin: 10px 0;">
+                        <strong>Total Repair Events: ${totalRepairs}</strong>
                     </p>
                     <p style="margin: 5px 0; padding-left: 20px;">
-                        🧘 BioBond: ${metrics.repairs.biobond}
+                        🧘 BioBond (personal): ${metrics.repairs.biobond}
                     </p>
                     <p style="margin: 5px 0; padding-left: 20px;">
-                        🤝 Civic: ${metrics.repairs.civic}
+                        🤝 Civic (peer support): ${metrics.repairs.civic}
                     </p>
                     <p style="margin: 5px 0; padding-left: 20px;">
-                        🏛️ Institutional: ${metrics.repairs.institutional}
+                        🏛️ Institutional (policy): ${metrics.repairs.institutional}
                     </p>
                 </div>
             `;
@@ -1115,28 +1764,32 @@
             
             const metricCards = [
                 {
-                    label: 'Eudaimonia',
+                    label: 'Eudaimonia (Flourishing)',
                     value: metrics.eudaimonia.toFixed(1),
                     change: (metrics.eudaimonia - baseline).toFixed(1),
-                    suffix: '/100'
+                    suffix: '/100',
+                    tooltip: 'Ability to be who you want to be'
                 },
                 {
                     label: 'Stress Level',
                     value: metrics.stress.toFixed(2),
                     change: (metrics.stress - 0).toFixed(2),
-                    suffix: ''
+                    suffix: '',
+                    tooltip: '0.8+ means soul-breaking stress'
                 },
                 {
                     label: 'Soul Integrity',
                     value: metrics.coherence.toFixed(2),
                     change: (metrics.coherence - 1.0).toFixed(2),
-                    suffix: ''
+                    suffix: '',
+                    tooltip: 'Can you still recognize yourself?'
                 },
                 {
                     label: 'Repair Events',
                     value: (metrics.repairs.biobond + metrics.repairs.civic + metrics.repairs.institutional),
                     change: '',
-                    suffix: ''
+                    suffix: '',
+                    tooltip: 'How many times system helped recovery'
                 }
             ];
             
@@ -1145,7 +1798,7 @@
                 const changeSymbol = card.change > 0 ? '+' : '';
                 
                 grid.innerHTML += `
-                    <div class="metric-card">
+                    <div class="metric-card" title="${card.tooltip}">
                         <div class="metric-label">${card.label}</div>
                         <div class="metric-value">${card.value}${card.suffix}</div>
                         ${card.change !== '' ? `<div class="metric-change ${changeClass}">${changeSymbol}${card.change} from start</div>` : ''}
@@ -1154,13 +1807,29 @@
             });
         }
         
-        // Chart creation functions
+        function displayMetricExplainers(scenario) {
+            const container = document.getElementById('metricExplainers');
+            if (!scenario.whatMetricsFeelLike) return;
+            
+            const explainers = scenario.whatMetricsFeelLike;
+            let html = '<h3 style="color: #667eea; margin: 20px 0;">🔍 What These Numbers Mean To Real People</h3>';
+            
+            Object.keys(explainers).forEach(metric => {
+                html += `
+                    <div class="metric-explainer">
+                        <strong>${metric.charAt(0).toUpperCase() + metric.slice(1)}:</strong>
+                        ${explainers[metric]}
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        // Chart creation functions (simplified versions - same as before)
         function createEudaimoniaChart(data) {
             const ctx = document.getElementById('eudaimoniaChart');
-            
-            if (charts.eudaimonia) {
-                charts.eudaimonia.destroy();
-            }
+            if (charts.eudaimonia) charts.eudaimonia.destroy();
             
             charts.eudaimonia = new Chart(ctx, {
                 type: 'line',
@@ -1178,28 +1847,10 @@
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top'
-                        }
-                    },
+                    plugins: { legend: { display: true } },
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            title: {
-                                display: true,
-                                text: 'Eudaimonia (Flourishing)'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Time Step'
-                            }
-                        }
+                        y: { beginAtZero: true, max: 100, title: { display: true, text: 'Eudaimonia (Flourishing)' } },
+                        x: { title: { display: true, text: 'Time Step' } }
                     }
                 }
             });
@@ -1207,10 +1858,7 @@
         
         function createComparisonChart(metabolicData, extractiveData) {
             const ctx = document.getElementById('eudaimoniaChart');
-            
-            if (charts.eudaimonia) {
-                charts.eudaimonia.destroy();
-            }
+            if (charts.eudaimonia) charts.eudaimonia.destroy();
             
             charts.eudaimonia = new Chart(ctx, {
                 type: 'line',
@@ -1218,7 +1866,7 @@
                     labels: Array.from({length: metabolicData.length}, (_, i) => i),
                     datasets: [
                         {
-                            label: '🌱 Metabolic Institution',
+                            label: '🌱 Metabolic (Protects Soul)',
                             data: metabolicData,
                             borderColor: '#4CAF50',
                             backgroundColor: 'rgba(76, 175, 80, 0.1)',
@@ -1227,7 +1875,7 @@
                             fill: true
                         },
                         {
-                            label: '⚡ Extractive Institution',
+                            label: '⚡ Extractive (Destroys Soul)',
                             data: extractiveData,
                             borderColor: '#f44336',
                             backgroundColor: 'rgba(244, 67, 54, 0.1)',
@@ -1239,28 +1887,10 @@
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top'
-                        }
-                    },
+                    plugins: { legend: { display: true } },
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            title: {
-                                display: true,
-                                text: 'Eudaimonia (Flourishing)'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Time Step'
-                            }
-                        }
+                        y: { beginAtZero: true, max: 100, title: { display: true, text: 'Eudaimonia' } },
+                        x: { title: { display: true, text: 'Time Step' } }
                     }
                 }
             });
@@ -1268,23 +1898,13 @@
         
         function createVirtueChart(virtues, length) {
             const ctx = document.getElementById('virtueChart');
-            
-            if (charts.virtue) {
-                charts.virtue.destroy();
-            }
+            if (charts.virtue) charts.virtue.destroy();
             
             const labels = Array.from({length: length}, (_, i) => i);
             const datasets = [];
             
             if (virtues.courage) {
-                // Individual mode - show all virtues
-                const colors = {
-                    courage: '#f44336',
-                    temperance: '#2196F3',
-                    wisdom: '#FF9800',
-                    justice: '#4CAF50'
-                };
-                
+                const colors = { courage: '#f44336', temperance: '#2196F3', wisdom: '#FF9800', justice: '#4CAF50' };
                 Object.keys(virtues).forEach(virtue => {
                     datasets.push({
                         label: virtue.charAt(0).toUpperCase() + virtue.slice(1),
@@ -1296,7 +1916,6 @@
                     });
                 });
             } else {
-                // Comparison mode - show eudaimonia comparison
                 Object.keys(virtues).forEach(key => {
                     const color = key.includes('Metabolic') ? '#4CAF50' : '#f44336';
                     datasets.push({
@@ -1312,34 +1931,13 @@
             
             charts.virtue = new Chart(ctx, {
                 type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: datasets
-                },
+                data: { labels: labels, datasets: datasets },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top'
-                        }
-                    },
+                    plugins: { legend: { display: true } },
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            title: {
-                                display: true,
-                                text: 'Level'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Time Step'
-                            }
-                        }
+                        y: { beginAtZero: true, max: 100, title: { display: true, text: 'Level' } },
+                        x: { title: { display: true, text: 'Time Step' } }
                     }
                 }
             });
@@ -1347,10 +1945,7 @@
         
         function createStressChart(stress, coherence) {
             const ctx = document.getElementById('stressChart');
-            
-            if (charts.stress) {
-                charts.stress.destroy();
-            }
+            if (charts.stress) charts.stress.destroy();
             
             charts.stress = new Chart(ctx, {
                 type: 'line',
@@ -1364,45 +1959,25 @@
                             backgroundColor: 'rgba(244, 67, 54, 0.1)',
                             borderWidth: 2,
                             tension: 0.4,
-                            yAxisID: 'y',
                             fill: true
                         },
                         {
-                            label: 'Soul Integrity (PRF Coherence)',
+                            label: 'Soul Integrity',
                             data: coherence,
                             borderColor: '#2196F3',
                             backgroundColor: 'rgba(33, 150, 243, 0.1)',
                             borderWidth: 2,
                             tension: 0.4,
-                            yAxisID: 'y',
                             fill: true
                         }
                     ]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top'
-                        }
-                    },
+                    plugins: { legend: { display: true } },
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 1.0,
-                            title: {
-                                display: true,
-                                text: 'Level (0-1)'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Time Step'
-                            }
-                        }
+                        y: { beginAtZero: true, max: 1.0, title: { display: true, text: 'Level (0-1)' } },
+                        x: { title: { display: true, text: 'Time Step' } }
                     }
                 }
             });
@@ -1410,10 +1985,7 @@
         
         function createStressComparisonChart(metabolicStress, extractiveStress) {
             const ctx = document.getElementById('stressChart');
-            
-            if (charts.stress) {
-                charts.stress.destroy();
-            }
+            if (charts.stress) charts.stress.destroy();
             
             charts.stress = new Chart(ctx, {
                 type: 'line',
@@ -1425,43 +1997,23 @@
                             data: metabolicStress,
                             borderColor: '#4CAF50',
                             borderWidth: 3,
-                            tension: 0.4,
-                            fill: false
+                            tension: 0.4
                         },
                         {
                             label: '⚡ Extractive Stress',
                             data: extractiveStress,
                             borderColor: '#f44336',
                             borderWidth: 3,
-                            tension: 0.4,
-                            fill: false
+                            tension: 0.4
                         }
                     ]
                 },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top'
-                        }
-                    },
+                    plugins: { legend: { display: true } },
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 1.0,
-                            title: {
-                                display: true,
-                                text: 'Stress Level'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Time Step'
-                            }
-                        }
+                        y: { beginAtZero: true, max: 1.0, title: { display: true, text: 'Stress Level' } },
+                        x: { title: { display: true, text: 'Time Step' } }
                     }
                 }
             });
@@ -1499,7 +2051,7 @@
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "simulation_data.csv");
+            link.setAttribute("download", "virtue_ethics_simulation_data.csv");
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -1507,6 +2059,7 @@
         
         // Initialize
         updateScenarioInfo();
+        showStoryIntro();
     </script>
 </body>
 </html>
